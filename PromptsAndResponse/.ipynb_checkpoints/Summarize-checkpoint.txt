@@ -1,0 +1,30 @@
+Prompt:
+
+Summarize this document: https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf
+
+LLM Response:
+
+This is the landmark 2017 NeurIPS paper **"Attention Is All You Need"** by Vaswani et al. from Google Brain/Research — the paper that introduced the **Transformer architecture**, which underpins virtually all modern large language models including GPT, BERT, and Claude.
+
+Here's a summary:
+
+**The Core Problem**
+Prior state-of-the-art sequence models (for tasks like machine translation) relied on complex recurrent or convolutional neural networks with encoder-decoder structures. These had a fundamental limitation: their sequential nature made parallelization during training difficult and made it hard to model long-range dependencies.
+
+**The Proposal: The Transformer**
+The authors proposed a new architecture — the Transformer — based *solely* on attention mechanisms, dispensing with recurrence and convolutions entirely. The key insight is that attention alone is sufficient to model relationships between all positions in a sequence.
+
+**Key Architectural Components**
+- **Scaled Dot-Product Attention:** Queries, keys, and values are used to compute weighted sums over positions. Dot products are scaled by √d_k to prevent vanishing gradients.
+- **Multi-Head Attention:** Rather than a single attention function, the model linearly projects queries, keys, and values *h* times with different learned projections, performing attention in parallel and concatenating results. This lets the model attend to information from different representation subspaces simultaneously.
+- **Positional Encoding:** Since there's no recurrence, the model injects sinusoidal positional information into the embeddings to preserve token order.
+- **Encoder-Decoder Structure:** Both consist of 6 stacked layers with multi-head self-attention and feed-forward sub-layers, connected by residual connections and layer normalization.
+
+**Why Self-Attention?**
+A self-attention layer connects all positions with a constant number of sequentially executed operations, whereas a recurrent layer requires O(n) sequential operations. This makes the Transformer far more parallelizable and better at capturing long-range dependencies.
+
+**Results**
+On the WMT 2014 English-to-German translation task, the Transformer achieved a new state-of-the-art BLEU score of 28.4, surpassing even ensemble models by over 2 BLEU points. On English-to-French, it reached 41.0 BLEU — all at a fraction of the training cost of prior models.
+
+**Impact**
+This paper is one of the most cited in AI history. The architecture it introduced became the foundation for BERT, GPT, T5, and essentially all modern LLMs.
